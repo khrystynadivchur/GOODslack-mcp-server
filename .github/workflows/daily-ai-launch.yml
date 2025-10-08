@@ -1,0 +1,16 @@
+name: Daily AI Chat Launcher
+
+on:
+  schedule:
+    # Runs every day at 09:00 UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allows manual run from Actions tab
+
+jobs:
+  launch_ai_chat:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger AI Assistant Chat
+        run: |
+          curl -L "${{ secrets.AI_CHAT_URL }}"
